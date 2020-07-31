@@ -1,0 +1,573 @@
+/*
+File Name: style.css
+Date: 07/22/20
+Programmer: Aster Bonisteel
+*/
+
+* {
+    box-sizing: border-box
+}
+
+/* VARIABLES */
+
+/* colors */
+
+@baseColor: #FFFFFF;
+@mBgColor: @baseColor;
+@tBgColor: @baseColor;
+@dBgColor: @baseColor;
+@footerColor: #000000;
+@linkColor: #000000;
+@linkHoverColor: #FF0000;
+@headerColor: #FAFAFA;
+
+/* sizes */
+
+@mFontSize: 16px;
+@tFontSize: @mFontSize * .9375;
+@dFontSize: @mFontSize * .875;
+@fFontSize: @mFontSize * .85;
+@h1FontSize: 2em;
+@h2FontSize: @h1FontSize * .85;
+@h3FontSize: @h1FontSize * .65;
+@summaryFontSize: .6em;
+@summaryFirstFontSize: 1.5em;
+@contactFontSize: 0.9em;
+
+/* margins */
+
+@pHeadingMargin: 1em 0;
+@mBodyMargin: 0 .5em;
+@tBodyMargin: 0 2.5%;
+@dBodyMargin: 0 2.7%;
+@dHeaderMargin: 0;
+@footerMargin: 0 0 0 0;
+@tFooterMargin: 60px;
+@dFooterMargin: 100px;
+@mlogoPMargin: 70px;
+
+@import "mixins.less";
+
+/* MOBILE STYLES */
+
+body {
+    font-family: 'Mulish', sans-serif;
+    line-height: 1.5em;
+    #project_mixins > .commonProperties(@mBgColor, @mFontSize);
+}
+
+#container {
+    #main_mixin > .margin(@mBodyMargin);
+}
+
+header img {
+    width: 20%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+p {
+    margin: @pHeadingMargin;
+}
+
+a {
+    color: @linkColor;
+
+    &:hover {
+        color: @linkHoverColor;
+        transition: 0.3s;
+    }
+}
+
+#logo {
+    background: url(../images/heroplaceholder.png);
+    background-repeat: no-repeat;
+    padding-bottom: @mlogoPMargin;
+    background-size: cover;
+
+    #intro {
+        margin-top: @mlogoPMargin;
+        margin-left: @mlogoPMargin;
+        margin-right: @mlogoPMargin;
+    }
+
+    h1 {
+        display: inline;
+    }
+}
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: @pHeadingMargin;
+    font-weight: bold;
+    #project_mixins > .size(@h1FontSize);
+    margin-bottom: 0;
+    margin-top: 0;
+    line-height: 2em;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: @pHeadingMargin;
+    font-weight: bold;
+    #project_mixins > .size(@h2FontSize);
+}
+
+h3 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: @pHeadingMargin;
+    font-weight: bold;
+    #project_mixins > .size(@h3FontSize);
+    font-style: italic;
+}
+
+ol {
+    list-style: decimal;
+    margin-left: 25px;
+}
+
+li {
+    line-height: 1.5em;
+}
+
+#hero {
+    /*margin: @dHeaderMargin;
+    padding: 0;*/
+    display: none;
+}
+
+/* MOBILE SLIDESHOW */
+
+#slideshow {
+    position: relative;
+    width: 340px;
+    height: 213px;
+    margin: 0 auto;
+}
+
+.slide {
+    width: 340px;
+    height: 213px;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* END MOBILE SLIDESHOW */
+
+/* FAQ ARROW */
+/* Arrow icon left */
+dt:before {
+    border: 0.55em solid;
+    border-color: transparent transparent transparent #FF0000;
+    content: '';
+    display: inline-block;
+    height: 0;
+    margin: 0.1em 0 0.1em 0.4em;
+    vertical-align: middle;
+    width: 0;
+}
+
+/* Arrow icon styles on hover when left */
+dt:hover:before {
+    border-left-color: #FF0000;
+}
+
+/* Arrow icon down */
+dt.open:before {
+    border-color: #FF0000 transparent transparent transparent;
+    border-bottom-width: 0;
+}
+
+/* Arrow icon styles on hover when down */
+dt.open:hover:before {
+    border-left-color: transparent;
+    border-top-color: #FF0000;
+}
+
+/* Question styles */
+dt {
+    font-size: @h3FontSize;
+    cursor: pointer;
+    padding: 2px 0;
+    line-height: 30px;
+
+    /* Question hover styles */
+    &:hover {
+        color: @linkHoverColor;
+        font-weight: bold;
+    }
+}
+
+/* Answer styles */
+dd {
+    margin-left: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Question styles when opened */
+dt.open {
+    color: @linkHoverColor;
+    font-weight: bold;
+}
+
+#honeypot {
+    display: none !important;
+}
+
+/* MOBILE FORM STYLES */
+#form {
+    line-height: 27px;
+
+    select,
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: @headerColor;
+        border: 0;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        transition: .3s box-shadow;
+        margin-bottom: 10px;
+    }
+
+    #mysubmit {
+        width: 40%;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        background-color: @linkHoverColor;
+        color: @baseColor;
+        transition: .3s filter;
+    }
+
+    label {
+        font-family: 'Mulish', sans-serif;
+        color: @linkHoverColor;
+        display: block;
+        margin-bottom: -20px;
+        margin-top: 10px;
+    }
+}
+
+/* END MOBILE FORM STYLES */
+
+footer {
+    margin-bottom: 10px;
+    background-color: @headerColor;
+    /* optional background image */
+    margin: @dHeaderMargin;
+    #project_mixins > .color(@footerColor);
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #A9A9AD;
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        display: inline;
+    }
+}
+
+#container {
+    margin: 0 1em;
+}
+
+#summary {
+    #project_mixins > .size(@summaryFontSize);
+    font-style: italic;
+    line-height: 115%;
+    margin-top: 5px;
+    letter-spacing: 1px;
+
+    &:first-letter {
+        #project_mixins > .size(@summaryFirstFontSize);
+        font-weight: bold;
+    }
+}
+
+#contact {
+    #project_mixins > .size(@contactFontSize);
+    letter-spacing: 3px;
+}
+
+main {
+    margin: @mBodyMargin;
+}
+
+.footer {
+    margin-top: 30px;
+    padding-bottom: 30px;
+    font-size: @fFontSize;
+    margin-bottom: 0;
+}
+
+.social {
+    padding: 15px 0;
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+
+    a:hover {
+        filter: brightness(80%)
+    }
+}
+
+section {
+    margin: 50px 0;
+}
+
+/* TABLET STYLES */
+
+@media only screen and (min-width: 600px) {
+
+    body {
+        #project_mixins > .commonProperties(@tBgColor, @tFontSize);
+    }
+
+    #container {
+        #main_mixin > .margin(@tBodyMargin);
+    }
+
+    header img {
+        width: 15%;
+    }
+
+    h2 {
+        margin-top: .8em;
+        margin-bottom: .8em;
+    }
+
+    h3 {
+        margin-top: 0;
+    }
+
+    ul {
+        margin-bottom: 1em;
+    }
+
+    #logo {
+        #intro {
+            margin-top: 150px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+    }
+
+    /* TABLET SLIDESHOW */
+
+    #slideshow {
+        width: 100%;
+        height: 400px;
+    }
+
+    .slide {
+        width: 100%;
+        height: 400px;
+    }
+
+    /* END TABLET SLIDESHOW */
+
+    /* TABLET FORM STYLES */
+    #form {
+
+        select,
+        input,
+        textarea {
+            width: 75%;
+        }
+    }
+
+    /* END TABLET FORM STYLES */
+
+    /* CSS GRID TABLET */
+
+    .footer {
+        display: grid;
+        grid-gap: 20px;
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    .nav {
+        grid-column: 2 / span 4;
+        grid-row: 1;
+        margin-left: @tFooterMargin;
+    }
+
+    .social {
+        grid-column: 8 / span 4;
+        grid-row: 1;
+    }
+
+    .copy {
+        grid-column: 13 / span 4;
+        grid-row: 1;
+        margin-right: @tFooterMargin;
+    }
+
+    /* END CSS GRID TABLET */
+
+    footer {
+        li {
+            line-height: 30px;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        line-height: 30px;
+        #project_mixins > .color(@footerColor);
+        text-align: left;
+        padding-bottom: 20px;
+    }
+
+    main {
+        margin: @tBodyMargin;
+    }
+}
+
+/* DESKTOP STYLES */
+
+@media only screen and (min-width: 1025px) {
+
+    body {
+        #project_mixins > .commonProperties(@dBgColor, @dFontSize);
+
+        #container {
+            #main_mixin > .margin(@dBodyMargin);
+        }
+
+        #hero {
+            #intro {
+                position: absolute;
+                margin: 250px 90px 0 90px;
+                top: 100px;
+            }
+        }
+
+        #logo {
+            display: inline;
+            background: none;
+
+            p {
+                display: none;
+            }
+        }
+
+        /* Hero image styles */
+        #hero {
+            display: block;
+            /* Space at top to unhide content under navbar */
+            margin-top: 61px;
+        }
+
+        header img {
+            max-width: 55px;
+            margin: 0;
+            min-height: 55px;
+        }
+
+        .header {
+            background-color: @headerColor;
+            /* Set the navbar to fixed position */
+            position: fixed;
+            /* Position the navbar at the top of the page */
+            top: 0;
+            /* Full width */
+            width: 100%;
+            /* Left and right space on header for desktop */
+            padding-left: 30px;
+            padding-right: 20px;
+        }
+
+        /* DESKTOP SLIDESHOW */
+
+        #slideshow {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            margin: 0 auto;
+        }
+
+        .slide {
+            width: 800px;
+            height: 500px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+        }
+
+        /* END DESKTOP SLIDESHOW */
+
+        /* DESKTOP FORM STYLES */
+        #form {
+
+            select,
+            input,
+            textarea {
+                width: 50%;
+                padding: 10px;
+
+                &:hover {
+                    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+                }
+            }
+
+            #mysubmit {
+                width: 20%;
+                display: inline;
+
+                &:hover {
+                    filter: brightness(90%);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        /* END DESKTOP FORM STYLES */
+
+        /* Space at bottom of footer */
+        footer {
+            padding-bottom: 30px;
+        }
+
+        /* CSS GRID DESKTOP */
+
+        /* Space at top of footer, under <hr> */
+        .footer {
+            margin-top: 25px;
+            font-size: @dFontSize;
+        }
+
+        /* Left space in footer for desktop */
+        .nav {
+            margin-left: @dFooterMargin;
+        }
+
+        /* Right space in footer for desktop */
+        .copy {
+            margin-right: @dFooterMargin;
+        }
+
+        /* Main content margins */
+        main {
+            margin: @dBodyMargin;
+        }
+
+        /* END CSS GRID DESKTOP */
+    }
+}
