@@ -1,0 +1,186 @@
+/*
+File Name: style.css
+Date: 08/12/20
+Programmer: Aster Bonisteel
+*/
+
+* {
+    box-sizing: border-box
+}
+
+/* VARIABLES */
+
+/* colors */
+
+@baseColor: #FFFFFF;
+@mBgColor: @baseColor;
+@tBgColor: @baseColor;
+@dBgColor: @baseColor;
+@linkHoverColor: #FF0000;
+@headerColor: #FAFAFA;
+@labelColor: #5A5A5A;
+
+/* sizes */
+
+@mFontSize: 16px;
+@tFontSize: @mFontSize * .9375;
+@dFontSize: @mFontSize * .875;
+@h1FontSize: 2em;
+@h2FontSize: @h1FontSize * .85;
+
+/* margins */
+
+@pHeadingMargin: 1em 0;
+@mBodyMargin: 0 .5em;
+@tBodyMargin: 0 2.5%;
+@dBodyMargin: 0 2.7%;
+
+@import "mixins.less";
+
+/* MOBILE STYLES */
+
+body {
+    font-family: 'Mulish', sans-serif;
+    line-height: 1.5em;
+    #project_mixins > .commonProperties(@mBgColor, @mFontSize);
+}
+
+#container {
+    #main_mixin > .margin(@mBodyMargin);
+}
+
+p {
+    margin: @pHeadingMargin;
+}
+
+h2 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    margin: @pHeadingMargin;
+    font-weight: bold;
+    #project_mixins > .size(@h2FontSize);
+}
+
+#honeypot {
+    display: none !important;
+}
+
+/* MOBILE FORM STYLES */
+#form {
+    line-height: 27px;
+
+    select,
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: @headerColor;
+        border: 0;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        transition: .3s box-shadow;
+        margin-bottom: 10px;
+    }
+
+    #mysubmit {
+        width: 40%;
+        display: block;
+        margin: auto;
+        margin-top: 5px;
+        background-color: @linkHoverColor;
+        color: @baseColor;
+        transition: .3s filter;
+    }
+
+    label {
+        font-family: 'Mulish', sans-serif;
+        color: @labelColor;
+        display: block;
+        margin-bottom: -20px;
+        margin-top: 10px;
+    }
+}
+
+/* END MOBILE FORM STYLES */
+
+main {
+    margin: @mBodyMargin;
+}
+
+section {
+    margin: 50px 0;
+}
+
+/* TABLET STYLES */
+
+@media only screen and (min-width: 600px) {
+
+    body {
+        #project_mixins > .commonProperties(@tBgColor, @tFontSize);
+    }
+
+    #container {
+        #main_mixin > .margin(@tBodyMargin);
+    }
+
+    h2 {
+        margin-top: .8em;
+        margin-bottom: .8em;
+    }
+
+    /* TABLET FORM STYLES */
+    #form {
+
+        select,
+        input,
+        textarea {
+            width: 75%;
+        }
+    }
+
+    /* END TABLET FORM STYLES */
+
+    main {
+        margin: @tBodyMargin;
+    }
+}
+
+/* DESKTOP STYLES */
+
+@media only screen and (min-width: 1025px) {
+
+    body {
+        #project_mixins > .commonProperties(@dBgColor, @dFontSize);
+
+        #container {
+            #main_mixin > .margin(@dBodyMargin);
+        }
+
+        /* DESKTOP FORM STYLES */
+        #form {
+
+            select,
+            input,
+            textarea {
+                width: 50%;
+                padding: 10px;
+
+                &:hover {
+                    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+                }
+            }
+
+            #mysubmit {
+                width: 20%;
+                display: inline;
+
+                &:hover {
+                    filter: brightness(90%);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        /* END DESKTOP FORM STYLES */
+    }
+}
