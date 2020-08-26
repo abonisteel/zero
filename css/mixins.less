@@ -1,0 +1,28 @@
+/*
+File Name: mixins.css
+Date: 07/24/20
+Programmer: Aster Bonisteel
+*/
+
+/* MIXINS */
+
+#project_mixins {
+    .commonProperties(@bg_color, @font_size) {
+        background-color: @bg_color;
+        font-size: @font_size;
+    }
+
+    .size(@font_size) {
+        font-size: @font_size;
+    }
+
+    .color(@color) {
+        color: @color;
+    }
+}
+
+#main_mixin {
+    .margin(@body_margin) {
+        margin: @body_margin;
+    }
+}
